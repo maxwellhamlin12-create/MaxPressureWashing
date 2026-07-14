@@ -106,7 +106,7 @@
 
   /* ---------- NAV ---------- */
   .nav {
-    background: var(--ink);
+    background: #000;
     color: #eef1f6;
     padding: 16px 28px;
   }
@@ -326,14 +326,14 @@
   .spec-card:hover { transform: translateY(-4px); box-shadow: 0 16px 30px -18px rgba(18,21,28,0.35); }
 
   .spec-card.premium {
-    background: var(--ink);
-    border-color: var(--ink);
-    color: var(--bg);
+    background: #12151c;
+    border-color: #12151c;
+    color: #eef1f6;
     background-image:
-      radial-gradient(circle 3px at 16px 16px, var(--bg) 99%, transparent 100%),
-      radial-gradient(circle 3px at calc(100% - 16px) 16px, var(--bg) 99%, transparent 100%),
-      radial-gradient(circle 3px at 16px calc(100% - 16px), var(--bg) 99%, transparent 100%),
-      radial-gradient(circle 3px at calc(100% - 16px) calc(100% - 16px), var(--bg) 99%, transparent 100%);
+      radial-gradient(circle 3px at 16px 16px, #eef1f6 99%, transparent 100%),
+      radial-gradient(circle 3px at calc(100% - 16px) 16px, #eef1f6 99%, transparent 100%),
+      radial-gradient(circle 3px at 16px calc(100% - 16px), #eef1f6 99%, transparent 100%),
+      radial-gradient(circle 3px at calc(100% - 16px) calc(100% - 16px), #eef1f6 99%, transparent 100%);
   }
 
   .spec-ribbon {
@@ -359,7 +359,7 @@
     color: var(--ink-soft);
     margin-bottom: 6px;
   }
-  .spec-card.premium .spec-unit { color: #9aa5c2; }
+  .spec-card.premium .spec-unit { color: #c3cee5; }
 
   .spec-card h3 { font-size: 1.5rem; margin-bottom: 18px; }
 
@@ -374,7 +374,7 @@
   }
   .spec-card.premium .spec-row { border-bottom-color: rgba(238,241,246,0.22); }
   .spec-row span:first-child { color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.72rem; align-self: center; }
-  .spec-card.premium .spec-row span:first-child { color: #9aa5c2; }
+  .spec-card.premium .spec-row span:first-child { color: #c3cee5; }
   .spec-row span:last-child { font-weight: 700; }
 
   .spec-price {
@@ -484,10 +484,10 @@
   /* ---------- CONTACT ---------- */
   .contact { padding: 0 0 40px; }
   .contact-panel {
-    background: var(--ink);
+    background: #12151c;
     border-radius: 24px;
     padding: 54px;
-    color: var(--bg);
+    color: #eef1f6;
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     gap: 40px;
@@ -512,7 +512,7 @@
     border-radius: 50%;
   }
   .contact-panel h2 { font-size: clamp(1.7rem, 3vw, 2.2rem); }
-  .contact-panel p { color: #b7c1de; margin-top: 12px; font-size: 1.02rem; max-width: 40ch; }
+  .contact-panel p { color: #cddaf5; margin-top: 12px; font-size: 1.02rem; max-width: 40ch; }
 
   .contact-links { display: flex; flex-direction: column; gap: 14px; }
   .contact-link {
@@ -522,7 +522,7 @@
     border-radius: 14px;
     padding: 16px 20px;
     text-decoration: none;
-    color: var(--bg);
+    color: #eef1f6;
     font-weight: 700;
     font-family: "JetBrains Mono", monospace;
     font-size: 1rem;
