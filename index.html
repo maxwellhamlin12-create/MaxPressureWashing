@@ -548,6 +548,87 @@
   }
   footer .tag { color: var(--hose-deep); font-weight: 700; }
 
+  /* ---------- PHONE CHOICE MODAL ---------- */
+  .phone-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .phone-modal[hidden] { display: none; }
+  .phone-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    opacity: 0;
+    transition: opacity 0.18s ease;
+  }
+  .phone-modal.open .phone-modal-backdrop { opacity: 1; }
+  .phone-modal-card {
+    position: relative;
+    background: var(--bg);
+    color: var(--ink);
+    border-radius: 16px;
+    padding: 32px 28px 28px;
+    max-width: 360px;
+    width: 100%;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.5);
+    transform: scale(0.94) translateY(6px);
+    opacity: 0;
+    transition: transform 0.18s ease, opacity 0.18s ease;
+  }
+  .phone-modal.open .phone-modal-card { transform: scale(1) translateY(0); opacity: 1; }
+  .phone-modal-close {
+    position: absolute;
+    top: 14px; right: 14px;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .phone-modal-close:hover { background: var(--bg-dim); color: var(--ink); }
+  .phone-modal-title {
+    font-family: "Oswald", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 1.15rem;
+    margin-bottom: 20px;
+    padding-right: 24px;
+  }
+  .phone-modal-actions { display: flex; flex-direction: column; gap: 12px; }
+  .phone-modal-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px;
+    border-radius: 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  }
+  .phone-modal-btn span { font-weight: 500; opacity: 0.85; }
+  .phone-modal-btn.call { background: var(--hose-deep); color: #fff; }
+  .phone-modal-btn.call:hover { background: var(--hose); transform: translateY(-2px); }
+  .phone-modal-btn.text { background: var(--bg-dim); color: var(--ink); border: 1px solid var(--line); }
+  .phone-modal-btn.text:hover { transform: translateY(-2px); border-color: var(--hose-deep); }
+  @media (prefers-reduced-motion: reduce) {
+    .phone-modal-backdrop, .phone-modal-card { transition: none; }
+  }
+
   @media (max-width: 900px) {
     .spec-grid { grid-template-columns: 1fr; }
     .stat-grid { grid-template-columns: repeat(2, 1fr); row-gap: 22px; }
@@ -643,7 +724,7 @@
           <div class="spec-row"><span>Time on site</span><span>~45 min</span></div>
         </div>
         <div class="spec-price"><sup>$</sup>50</div>
-        <a class="spec-cta" href="tel:7163292681">Book this unit</a>
+        <a class="spec-cta js-phone-choice" href="tel:7163292681">Book this unit</a>
       </div>
 
       <div class="spec-card">
@@ -655,7 +736,7 @@
           <div class="spec-row"><span>Time on site</span><span>~60 min</span></div>
         </div>
         <div class="spec-price"><sup>$</sup>75</div>
-        <a class="spec-cta" href="tel:7163292681">Book this unit</a>
+        <a class="spec-cta js-phone-choice" href="tel:7163292681">Book this unit</a>
       </div>
 
       <div class="spec-card premium">
@@ -668,7 +749,7 @@
           <div class="spec-row"><span>Time on site</span><span>~90 min</span></div>
         </div>
         <div class="spec-price"><sup>$</sup>150</div>
-        <a class="spec-cta" href="tel:7163292681">Book this unit</a>
+        <a class="spec-cta js-phone-choice" href="tel:7163292681">Book this unit</a>
       </div>
     </div>
     <p class="spec-note">Prices cover typical residential sizes above — larger properties get a quick custom quote.</p>
@@ -730,7 +811,7 @@
         <p>Text a photo of your driveway, walkway, or patio and get a flat price back same day. Booking takes two minutes.</p>
       </div>
       <div class="contact-links">
-        <a class="contact-link" href="tel:7163292681">📞 <span><small>Call or text</small>716-329-2681</span></a>
+        <a class="contact-link js-phone-choice" href="tel:7163292681">📞 <span><small>Call or text</small>716-329-2681</span></a>
         <a class="contact-link" href="mailto:maxwellhamlin12@gmail.com">✉️ <span><small>Email</small>maxwellhamlin12@gmail.com</span></a>
       </div>
     </div>
@@ -742,6 +823,18 @@
     Max Pressure Washing · Clarence, NY · <span class="tag">We wash it like it's our own.</span>
   </div>
 </footer>
+
+<div class="phone-modal" id="phoneModal" hidden>
+  <div class="phone-modal-backdrop" data-phone-close></div>
+  <div class="phone-modal-card" role="dialog" aria-modal="true" aria-labelledby="phoneModalTitle">
+    <button type="button" class="phone-modal-close" data-phone-close aria-label="Close">✕</button>
+    <div id="phoneModalTitle" class="phone-modal-title">How do you want to reach out?</div>
+    <div class="phone-modal-actions">
+      <a class="phone-modal-btn call" href="tel:7163292681">📞 Call<span>716-329-2681</span></a>
+      <a class="phone-modal-btn text" href="sms:7163292681">💬 Text<span>716-329-2681</span></a>
+    </div>
+  </div>
+</div>
 
 <script>
 (function () {
@@ -778,5 +871,39 @@
   } else {
     setNeedle(targetAngle);
   }
+
+  var modal = document.getElementById('phoneModal');
+  var lastFocused = null;
+
+  function openModal(trigger) {
+    lastFocused = trigger;
+    modal.hidden = false;
+    requestAnimationFrame(function () { modal.classList.add('open'); });
+    var closeBtn = modal.querySelector('.phone-modal-close');
+    if (closeBtn) closeBtn.focus();
+    document.addEventListener('keydown', onKeydown);
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+    document.removeEventListener('keydown', onKeydown);
+    setTimeout(function () { modal.hidden = true; }, reduce ? 0 : 180);
+    if (lastFocused) lastFocused.focus();
+  }
+
+  function onKeydown(e) {
+    if (e.key === 'Escape') closeModal();
+  }
+
+  document.querySelectorAll('.js-phone-choice').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      openModal(el);
+    });
+  });
+
+  modal.querySelectorAll('[data-phone-close]').forEach(function (el) {
+    el.addEventListener('click', closeModal);
+  });
 })();
 </script>
