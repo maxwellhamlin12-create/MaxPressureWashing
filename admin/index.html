@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin — Max Pressure Washing</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body class="admin-body">
+
+  <header class="admin-header">
+    <div class="container admin-header-inner">
+      <p class="admin-brand">Max Pressure Washing — Admin</p>
+      <button id="logout-btn" class="btn btn-outline" hidden>Log out</button>
+    </div>
+  </header>
+
+  <main class="container admin-main">
+
+    <!-- Shown when not logged in -->
+    <section id="login-view" class="admin-card">
+      <h1>Log in</h1>
+      <p class="admin-sub">Use the admin email and password you set up in Supabase.</p>
+      <form id="login-form" class="admin-form">
+        <div class="form-row">
+          <label for="login-email">Email</label>
+          <input id="login-email" type="email" required autocomplete="username" />
+        </div>
+        <div class="form-row">
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password" required autocomplete="current-password" />
+        </div>
+        <button class="btn btn-primary btn-block" type="submit">Log in</button>
+        <p id="login-error" class="admin-error" hidden></p>
+      </form>
+    </section>
+
+    <!-- Shown when logged in -->
+    <section id="dashboard-view" hidden>
+      <div class="admin-card">
+        <h1>Services &amp; pricing</h1>
+        <p class="admin-sub">Changes here update your live site right away.</p>
+        <div id="services-list" class="admin-services-list"></div>
+        <p id="services-status" class="admin-status"></p>
+      </div>
+
+      <div class="admin-card">
+        <h2>Add a new service</h2>
+        <form id="add-form" class="admin-form admin-form-grid">
+          <div class="form-row">
+            <label for="add-name">Name</label>
+            <input id="add-name" type="text" required placeholder="Roof Cleaning" />
+          </div>
+          <div class="form-row">
+            <label for="add-price">Price label</label>
+            <input id="add-price" type="text" required placeholder="$120" />
+          </div>
+          <div class="form-row admin-form-full">
+            <label for="add-description">Description</label>
+            <textarea id="add-description" rows="2" required placeholder="What's included, in one sentence."></textarea>
+          </div>
+          <div class="form-row">
+            <label for="add-order">Order</label>
+            <input id="add-order" type="number" value="10" />
+          </div>
+          <div class="form-row form-row-checkbox">
+            <label><input id="add-featured" type="checkbox" /> Mark as "Most popular"</label>
+          </div>
+          <button class="btn btn-primary" type="submit">Add service</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

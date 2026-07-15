@@ -1,0 +1,124 @@
+/* Admin tool — reuses the color variables from ../styles.css */
+
+/* ../styles.css gives .btn a display of its own, which beats the browser's
+   default styling for the [hidden] attribute — this puts it back in charge. */
+[hidden] { display: none !important; }
+
+.admin-body {
+  background: var(--concrete);
+  min-height: 100vh;
+}
+
+.admin-header {
+  background: var(--navy);
+  padding: 16px 0;
+}
+
+.admin-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-brand {
+  font-family: var(--font-display);
+  color: var(--white);
+  font-weight: 600;
+  margin: 0;
+}
+
+.admin-main {
+  padding: 40px 16px 80px;
+  max-width: 720px;
+}
+
+.admin-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 28px;
+  margin-bottom: 24px;
+}
+
+.admin-card h1 { font-size: 1.5rem; margin: 0 0 4px; }
+.admin-card h2 { font-size: 1.2rem; margin: 0 0 4px; }
+
+.admin-sub {
+  color: var(--slate);
+  margin: 0 0 20px;
+}
+
+.admin-form .form-row { margin-bottom: 16px; }
+
+.admin-form label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--navy);
+}
+
+.admin-form input[type="text"],
+.admin-form input[type="email"],
+.admin-form input[type="password"],
+.admin-form input[type="number"],
+.admin-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font: inherit;
+  color: var(--ink);
+}
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 16px;
+}
+
+.admin-form-full { grid-column: 1 / -1; }
+
+.form-row-checkbox label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+}
+
+.admin-error {
+  color: #b3261e;
+  margin-top: 12px;
+}
+
+.admin-status {
+  color: var(--slate);
+  min-height: 1.2em;
+}
+
+.admin-service-row {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 16px;
+}
+
+.admin-service-row .form-row { margin-bottom: 12px; }
+
+.admin-service-row-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.admin-service-row-actions .btn-danger {
+  background: var(--white);
+  color: #b3261e;
+  border: 1px solid #b3261e;
+}
+.admin-service-row-actions .btn-danger:hover { background: #b3261e; color: var(--white); }
