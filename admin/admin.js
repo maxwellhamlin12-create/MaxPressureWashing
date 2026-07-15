@@ -2,7 +2,7 @@
 // Handles login (Supabase Auth) and editing the services/pricing table.
 
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-import { SUPABASE_URL, SUPABASE_ANON_KEY } from "../supabase-config.js";
+import { SUPABASE_URL, SUPABASE_ANON_KEY } from "/supabase-config.js";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
