@@ -1,0 +1,19 @@
+HOW TO ADD YOUR REAL PHOTOS
+===========================
+
+1. Take a BEFORE and an AFTER photo of the same spot, from the same angle.
+   Landscape (wide) photos work best. Phone photos are fine.
+
+2. Drop them into this "images" folder with simple names, for example:
+     driveway-before.jpg
+     driveway-after.jpg
+
+3. Open index.html and find the matching slider (look for the comments
+   that say "BEFORE/AFTER SLIDER"). Delete the placeholder <div class="ph...">
+   block and un-comment the <img> tag right below it, updating the file name.
+
+4. Do the same for the "PHOTO OF MAX PLACEHOLDER" in the Meet Max section —
+   a friendly photo of Max with his gear works great there.
+
+Tip: keep photos under ~500 KB each so the site stays fast. Screenshots or
+exports from the Photos app at "Large" size are usually perfect.
