@@ -878,3 +878,86 @@ html.anim .reveal.in {
 
   .footer-inner { grid-template-columns: 1fr; gap: 1.8rem; }
 }
+
+/* ---------- Call-or-text choice popup ---------- */
+.phone-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.phone-modal[hidden] { display: none; }
+.phone-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 42, 74, 0.55);
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+.phone-modal.open .phone-modal-backdrop { opacity: 1; }
+.phone-modal-card {
+  position: relative;
+  background: var(--white);
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: 2rem 1.75rem 1.75rem;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: var(--shadow);
+  transform: scale(0.94) translateY(6px);
+  opacity: 0;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+.phone-modal.open .phone-modal-card { transform: scale(1) translateY(0); opacity: 1; }
+.phone-modal-close {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--slate);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 150ms ease, color 150ms ease;
+}
+.phone-modal-close:hover { background: var(--concrete); color: var(--ink); }
+.phone-modal-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--navy);
+  margin: 0 1.5rem 1.25rem 0;
+}
+.phone-modal-actions { display: flex; flex-direction: column; gap: 0.75rem; }
+.phone-modal-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.95rem;
+  border-radius: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+}
+.phone-modal-btn span { font-weight: 500; opacity: 0.85; margin-left: 0.35rem; }
+.phone-modal-btn.call { background: var(--blue); color: var(--white); }
+.phone-modal-btn.call:hover { background: var(--blue-dark); transform: translateY(-1px); }
+.phone-modal-btn.text { background: var(--concrete); color: var(--navy); border: 1px solid var(--line); }
+.phone-modal-btn.text:hover { border-color: var(--blue); transform: translateY(-1px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .phone-modal-backdrop, .phone-modal-card { transition: none; }
+}

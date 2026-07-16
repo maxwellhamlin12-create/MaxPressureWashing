@@ -143,3 +143,39 @@ if (!prefersReduced && "IntersectionObserver" in window) {
 
 // ---------- Footer year ----------
 document.querySelector("[data-year]").textContent = new Date().getFullYear();
+
+// ---------- Call-or-text choice popup ----------
+const phoneModal = document.getElementById("phoneModal");
+if (phoneModal) {
+  let lastFocused = null;
+
+  const openPhoneModal = (trigger) => {
+    lastFocused = trigger;
+    phoneModal.hidden = false;
+    setTimeout(() => phoneModal.classList.add("open"), 10);
+    phoneModal.querySelector(".phone-modal-close").focus();
+    document.addEventListener("keydown", onPhoneModalKeydown);
+  };
+
+  const closePhoneModal = () => {
+    phoneModal.classList.remove("open");
+    document.removeEventListener("keydown", onPhoneModalKeydown);
+    setTimeout(() => { phoneModal.hidden = true; }, prefersReduced ? 0 : 180);
+    if (lastFocused) lastFocused.focus();
+  };
+
+  function onPhoneModalKeydown(e) {
+    if (e.key === "Escape") closePhoneModal();
+  }
+
+  document.querySelectorAll(".js-phone-choice").forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      openPhoneModal(el);
+    });
+  });
+
+  phoneModal.querySelectorAll("[data-phone-close]").forEach((el) =>
+    el.addEventListener("click", closePhoneModal)
+  );
+}
