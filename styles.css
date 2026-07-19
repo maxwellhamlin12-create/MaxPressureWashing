@@ -490,9 +490,16 @@ a:hover { color: var(--blue-dark); }
 
 .price-desc { color: var(--slate); flex-grow: 1; }
 
+.pricing-disclaimer {
+  text-align: center;
+  margin: 1.4rem auto 0;
+  color: var(--slate);
+  font-size: 0.85rem;
+}
+
 .pricing-note {
   text-align: center;
-  margin: 2.2rem auto 0;
+  margin: 1.1rem auto 0;
   color: var(--slate);
   max-width: 34rem;
 }
