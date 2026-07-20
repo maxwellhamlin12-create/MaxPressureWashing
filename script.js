@@ -25,6 +25,34 @@ const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 8);
 window.addEventListener("scroll", onScroll, { passive: true });
 onScroll();
 
+// ---------- Night mode toggle ----------
+const themeToggle = document.getElementById("theme-toggle");
+if (themeToggle) {
+  const THEME_KEY = "mpw-theme";
+  const root = document.documentElement;
+
+  const applyTheme = (theme) => {
+    if (theme === "dark") {
+      root.setAttribute("data-theme", "dark");
+    } else {
+      root.removeAttribute("data-theme");
+    }
+    themeToggle.setAttribute("aria-pressed", theme === "dark");
+    themeToggle.setAttribute(
+      "aria-label",
+      theme === "dark" ? "Switch to day mode" : "Switch to night mode"
+    );
+  };
+
+  applyTheme(root.getAttribute("data-theme") === "dark" ? "dark" : "light");
+
+  themeToggle.addEventListener("click", () => {
+    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    localStorage.setItem(THEME_KEY, next);
+    applyTheme(next);
+  });
+}
+
 // ---------- Mobile menu ----------
 const navToggle = document.getElementById("nav-toggle");
 const mainNav = document.getElementById("main-nav");
