@@ -5,13 +5,21 @@
   <script>
     (function () {
       var saved = localStorage.getItem("mpw-theme");
-      if (saved === "dark") document.documentElement.setAttribute("data-theme", "dark");
+      var isDark;
+      if (saved === "dark" || saved === "light") {
+        isDark = saved === "dark";
+      } else {
+        // No manual choice yet — default to dark between 8pm and 6am
+        var hour = new Date().getHours();
+        isDark = hour >= 20 || hour < 6;
+      }
+      if (isDark) document.documentElement.setAttribute("data-theme", "dark");
     })();
   </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Max Pressure Washing — Driveway, Walkway &amp; Patio Cleaning in Clarence, NY</title>
-  <meta name="description" content="Reliable, affordable pressure washing in Clarence, NY. Driveways $150, patios $75, walkways $50 — upfront prices and free quotes. Run by a local Clarence High School student. Call (716) 329-2681." />
+  <meta name="description" content="Reliable, affordable pressure washing in Clarence, NY. Driveways $200, patios $150, walkways $100 — upfront prices and free quotes. Run by a local Clarence High School student. Call (716) 329-2681." />
 
   <!-- Social sharing preview -->
   <meta property="og:title" content="Max Pressure Washing — Clarence, NY" />
@@ -37,7 +45,7 @@
     "email": "maxwellhamlin12@gmail.com",
     "areaServed": "Clarence, NY",
     "address": { "@type": "PostalAddress", "addressLocality": "Clarence", "addressRegion": "NY" },
-    "priceRange": "$50-$150"
+    "priceRange": "$100-$200"
   }
   </script>
 </head>
@@ -144,24 +152,24 @@
         <div class="pricing-grid" id="pricing-grid">
           <article class="price-card reveal">
             <h3>Walkway Cleaning</h3>
-            <p class="price"><span class="price-num">$50</span></p>
+            <p class="price"><span class="price-num">$100</span></p>
             <p class="price-desc">Front paths and walkways cleared of dirt, moss, and grime — an instant curb-appeal boost.</p>
-            <a class="btn btn-outline btn-block" href="#contact" data-service="Walkway Cleaning ($50)">Book Now</a>
+            <a class="btn btn-outline btn-block" href="#contact" data-service="Walkway Cleaning ($100)">Book Now</a>
           </article>
 
           <article class="price-card price-card-featured reveal">
             <p class="badge">Most popular</p>
             <h3>Driveway Cleaning</h3>
-            <p class="price"><span class="price-num">$150</span></p>
+            <p class="price"><span class="price-num">$200</span></p>
             <p class="price-desc">A full driveway wash that lifts tire marks, oil spots, and years of buildup.</p>
-            <a class="btn btn-primary btn-block" href="#contact" data-service="Driveway Cleaning ($150)">Book Now</a>
+            <a class="btn btn-primary btn-block" href="#contact" data-service="Driveway Cleaning ($200)">Book Now</a>
           </article>
 
           <article class="price-card reveal">
             <h3>Patio Cleaning</h3>
-            <p class="price"><span class="price-num">$75</span></p>
+            <p class="price"><span class="price-num">$150</span></p>
             <p class="price-desc">Concrete, stone, or paver patios refreshed and ready for summer cookouts.</p>
-            <a class="btn btn-outline btn-block" href="#contact" data-service="Patio Cleaning ($75)">Book Now</a>
+            <a class="btn btn-outline btn-block" href="#contact" data-service="Patio Cleaning ($150)">Book Now</a>
           </article>
         </div>
 
@@ -330,9 +338,9 @@
           <div class="form-row">
             <label for="f-service">Service needed</label>
             <select id="f-service" name="service">
-              <option>Walkway Cleaning ($50)</option>
-              <option>Patio Cleaning ($75)</option>
-              <option selected>Driveway Cleaning ($150)</option>
+              <option>Walkway Cleaning ($100)</option>
+              <option>Patio Cleaning ($150)</option>
+              <option selected>Driveway Cleaning ($200)</option>
               <option>Combination / larger job (free quote)</option>
               <option>Something else</option>
             </select>
