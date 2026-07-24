@@ -876,6 +876,13 @@ html.anim .reveal.in {
   transition: opacity 600ms ease, transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+/* Stagger cards within a grid so they pop in one after another. */
+html.anim .pricing-grid .price-card:nth-child(2).in { transition-delay: 90ms; }
+html.anim .pricing-grid .price-card:nth-child(3).in { transition-delay: 180ms; }
+html.anim .why-grid .why-card:nth-child(2).in { transition-delay: 90ms; }
+html.anim .why-grid .why-card:nth-child(3).in { transition-delay: 180ms; }
+html.anim .why-grid .why-card:nth-child(4).in { transition-delay: 270ms; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   html.anim .reveal { opacity: 1; transform: none; }
